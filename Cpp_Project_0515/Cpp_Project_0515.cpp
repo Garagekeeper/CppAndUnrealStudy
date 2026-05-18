@@ -14,7 +14,7 @@ int main()
 	cin >> InputNumber;
 	printf("\nYour age is  : [%d]\n", InputNumber);
 
-	printf("Hello banch\n");
+	printf("Hello banch banch\n");
 
 	return 0;
 }
