@@ -23,5 +23,8 @@
     <ClInclude Include="Day0515.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Day0516.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
