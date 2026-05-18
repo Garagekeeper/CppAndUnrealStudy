@@ -13,6 +13,9 @@ int main()
 	printf("나이를 입력해 주세요 : __\b\b");
 	cin >> InputNumber;
 	printf("\nYour age is  : [%d]\n", InputNumber);
+	printf("\nYour age is  : [%d]\n", InputNumber);
+	printf("\nYour age is  : [%d]\n", InputNumber);
+	printf("\nYour age is  : [%d]\n", InputNumber);
 
 	printf("Hello banch banch\n");
 
