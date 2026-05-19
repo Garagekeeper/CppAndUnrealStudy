@@ -126,6 +126,7 @@
     <ClCompile Include="Cpp_Project_0515.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
   </ItemGroup>
