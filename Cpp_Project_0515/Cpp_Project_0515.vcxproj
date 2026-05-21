@@ -124,12 +124,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Project_0515.cpp" />
+    <ClCompile Include="Day0521_2_1.cpp" />
+    <ClCompile Include="Day0521_2_2.cpp" />
+    <ClCompile Include="Day0521_2_3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
     <ClInclude Include="Day0520.h" />
+    <ClInclude Include="Day0521.h" />
+    <ClInclude Include="Day0521_2_1.h" />
+    <ClInclude Include="Day0521_2_2.h" />
+    <ClInclude Include="Day0521_2_3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

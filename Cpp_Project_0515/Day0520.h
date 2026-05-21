@@ -332,7 +332,8 @@
 /*
 // 간단 실습
 
-	srand(time(0));
+	// 원래는 이렇게 변경하면 안된다네요 
+	srand(static_cast<unsigned int>(time(0)));
 
 	{
 		// 1. 가위 바위 보
@@ -506,31 +507,31 @@
 		printf("점프 상태 추가\n");
 		PlayerState |= (1 << JUMP);
 		printf("현재 상태 \n 대기 : [%c] , 점프 : [%c] , 공격 : [%c] , 무적 : [%c]\n",
-			(PlayerState& (1 << IDLE)) ? 'O' : 'X', (PlayerState& (1 << JUMP)) ? 'O' : 'X', (PlayerState& (1 << ATTACK)) ? 'O' : 'X', (PlayerState& (1 << INVINCIBLE)) ? 'O' : 'X');
+			(PlayerState & (1 << IDLE)) ? 'O' : 'X', (PlayerState & (1 << JUMP)) ? 'O' : 'X', (PlayerState & (1 << ATTACK)) ? 'O' : 'X', (PlayerState & (1 << INVINCIBLE)) ? 'O' : 'X');
 		printf("------------------------------------------------------------------\n");
 
 		printf("공격 상태 추가\n");
 		PlayerState |= (1 << ATTACK);
 		printf("현재 상태 \n 대기 : [%c] , 점프 : [%c] , 공격 : [%c] , 무적 : [%c]\n",
-			(PlayerState& (1 << IDLE)) ? 'O' : 'X', (PlayerState& (1 << JUMP)) ? 'O' : 'X', (PlayerState& (1 << ATTACK)) ? 'O' : 'X', (PlayerState& (1 << INVINCIBLE)) ? 'O' : 'X');
+			(PlayerState & (1 << IDLE)) ? 'O' : 'X', (PlayerState & (1 << JUMP)) ? 'O' : 'X', (PlayerState & (1 << ATTACK)) ? 'O' : 'X', (PlayerState & (1 << INVINCIBLE)) ? 'O' : 'X');
 		printf("------------------------------------------------------------------\n");
 
 		printf("대기 상태 해제\n");
 		PlayerState &= ~(1 << IDLE);
 		printf("현재 상태 \n 대기 : [%c] , 점프 : [%c] , 공격 : [%c] , 무적 : [%c]\n",
-			(PlayerState& (1 << IDLE)) ? 'O' : 'X', (PlayerState& (1 << JUMP)) ? 'O' : 'X', (PlayerState& (1 << ATTACK)) ? 'O' : 'X', (PlayerState& (1 << INVINCIBLE)) ? 'O' : 'X');
+			(PlayerState & (1 << IDLE)) ? 'O' : 'X', (PlayerState & (1 << JUMP)) ? 'O' : 'X', (PlayerState & (1 << ATTACK)) ? 'O' : 'X', (PlayerState & (1 << INVINCIBLE)) ? 'O' : 'X');
 		printf("------------------------------------------------------------------\n");
 
 		printf("무적 상태 추가\n");
 		PlayerState |= (1 << INVINCIBLE);
 		printf("현재 상태 \n 대기 : [%c] , 점프 : [%c] , 공격 : [%c] , 무적 : [%c]\n",
-			(PlayerState& (1 << IDLE)) ? 'O' : 'X', (PlayerState& (1 << JUMP)) ? 'O' : 'X', (PlayerState& (1 << ATTACK)) ? 'O' : 'X', (PlayerState& (1 << INVINCIBLE)) ? 'O' : 'X');
+			(PlayerState & (1 << IDLE)) ? 'O' : 'X', (PlayerState & (1 << JUMP)) ? 'O' : 'X', (PlayerState & (1 << ATTACK)) ? 'O' : 'X', (PlayerState & (1 << INVINCIBLE)) ? 'O' : 'X');
 		printf("------------------------------------------------------------------\n");
 
 		printf("무적 상태 토글(XOR 사용)\n");
 		PlayerState ^= (1 << INVINCIBLE);
 		printf("현재 상태 \n 대기 : [%c] , 점프 : [%c] , 공격 : [%c] , 무적 : [%c]\n",
-			(PlayerState& (1 << IDLE)) ? 'O' : 'X', (PlayerState& (1 << JUMP)) ? 'O' : 'X', (PlayerState& (1 << ATTACK)) ? 'O' : 'X', (PlayerState& (1 << INVINCIBLE)) ? 'O' : 'X');
+			(PlayerState & (1 << IDLE)) ? 'O' : 'X', (PlayerState & (1 << JUMP)) ? 'O' : 'X', (PlayerState & (1 << ATTACK)) ? 'O' : 'X', (PlayerState & (1 << INVINCIBLE)) ? 'O' : 'X');
 		printf("------------------------------------------------------------------\n");
 	}
 
@@ -579,8 +580,8 @@
 
 			int min = YourDePosit >= ComputerDePosit ? ComputerDePosit : YourDePosit;
 			int bet = 0;
-			// 직전에 컴퓨터가 이긴 경우 컴퓨터가 임의 배팅
-			if (IsComputerWon)
+			// 직전에 컴퓨터가 진 경우 컴퓨터가 임의 배팅
+			if (!IsComputerWon)
 			{
 				bet = rand() % min + 1;
 				printf("컴퓨터의 배팅 금액 = %d\n\n", bet);
@@ -592,6 +593,8 @@
 				{
 					printf("배팅 금액 입력 : ");
 					cin >> InputNumber;
+					cin.clear();				<---------------------------------------------------------------- 에러 상태 해제
+					cin.ignore(10000, '\n')		<---------------------------------------------------------------- 버퍼 지우기
 					if (InputNumber <= 0 || InputNumber > min)
 						printf("베팅 금액은 1이상이어야 하고 두사람의 소지금액 이하여야 합니다.\n\n");
 					else
