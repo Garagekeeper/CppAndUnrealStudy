@@ -5,7 +5,7 @@ using namespace std;
 
 void PrintRoundForPrac2(int Round);
 void PrintMoneyForPrac2(int Yours, int Computer);
-int RollDice(int DiceMax);
+int RollDice0521(int DiceMax);
 void PrintDice(int Yours, int Computer);
 int GetMinBet(int A, int B);
 int BetByComputer(int Minbet);

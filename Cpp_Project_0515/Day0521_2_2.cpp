@@ -11,7 +11,7 @@ void PrintMoneyForPrac2(int Yours, int Computer)
 	printf("컴퓨터의 소지금 : %d\n\n", Computer);
 }
 
-int RollDice(int DiceMax)
+int RollDice0521(int DiceMax)
 {
 	return rand() % DiceMax + 1;
 }
@@ -123,8 +123,8 @@ void RunPracticeTwo()
 		PrintMoneyForPrac2(YourDePosit, ComputerDePosit);
 
 		printf("주사위 던지기\n");
-		YourDice = RollDice(DiceMax);
-		ComputerDice = RollDice(DiceMax);
+		YourDice = RollDice0521(DiceMax);
+		ComputerDice = RollDice0521(DiceMax);
 		PrintDice(YourDice, ComputerDice);
 
 
@@ -143,8 +143,8 @@ void RunPracticeTwo()
 
 
 		printf("주사위 던지기\n");
-		int NYourDice = RollDice(DiceMax);
-		int NComputerDice = RollDice(DiceMax);
+		int NYourDice = RollDice0521(DiceMax);
+		int NComputerDice = RollDice0521(DiceMax);
 
 		int YourDiceAmount = NYourDice + YourDice;
 		int ComputerDiceAmount = NComputerDice + ComputerDice;

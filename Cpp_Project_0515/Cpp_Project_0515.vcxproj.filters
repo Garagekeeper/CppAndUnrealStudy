@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Cpp_Project_0515.cpp">
+    <ClCompile Include="Cpp_Project.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Day0521_2_1.cpp">
@@ -25,6 +25,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Day0521_2_3.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0522.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0526.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,6 +57,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Day0521_2_3.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0522.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0526.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
