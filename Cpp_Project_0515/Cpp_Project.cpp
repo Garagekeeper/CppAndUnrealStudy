@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
-#include "Day0526.h"
+#include "Day0527.h"
 using namespace std;
 
 
@@ -11,5 +11,5 @@ int main()
 	//Seed = time(0);
 	srand(Seed);
 
-	Day0526_Run();
+	Day0527_Run();
 }

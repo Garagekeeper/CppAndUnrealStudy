@@ -129,6 +129,7 @@
     <ClCompile Include="Day0521_2_2.cpp" />
     <ClCompile Include="Day0521_2_3.cpp" />
     <ClCompile Include="Day0526.cpp" />
+    <ClCompile Include="Day0527.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0519.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Day0521_2_3.h" />
     <ClInclude Include="Day0522.h" />
     <ClInclude Include="Day0526.h" />
+    <ClInclude Include="Day0527.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
