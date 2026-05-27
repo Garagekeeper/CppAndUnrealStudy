@@ -223,4 +223,19 @@ bool IsCritical(int CriticalPercentage);
 /// <returns>승리 여부</returns>
 bool TurnBasedCombat(int PlayerHp);
 void Homework05_Run();
+
+/// <summary>
+/// 해당 위치의 타일 정보를 리턴하는 함수
+/// </summary>
+/// <param name="X">X좌표</param>
+/// <param name="Y">Y좌표</param>
+/// <returns>해당 위치의 데이터</returns>
+EMapEnv GetMazeData(int X, int Y);
+/// <summary>
+/// 해당 위치의 타일 정보를 세팅하는 함수
+/// </summary>
+/// <param name="X">X좌표</param>
+/// <param name="Y">Y좌표</param>
+/// <param name="Data">세팅할 값</param>
+void	SetMazeData(int X, int Y, EMapEnv Data);
 #pragma endregion

@@ -155,15 +155,16 @@ void Print2DMap()
 	{
 		for (int j = 0; j < MazeCols; j++)
 		{
+			EMapEnv TileData = GetMazeData(i, j);
 			if ((i == PlayerX) && (j == PlayerY))
 				printf("%c", 'P');
-			else if (Maze[i * MazeCols + j] == ROAD)
+			else if (TileData == ROAD)
 				printf("%c", '.');
-			else if (Maze[i * MazeCols + j] == WALL)
+			else if (TileData == WALL)
 				printf("%c", '#');
-			else if (Maze[i * MazeCols + j] == START)
+			else if (TileData == START)
 				printf("%c", 'S');
-			else if (Maze[i * MazeCols + j] == END)
+			else if (TileData == END)
 				printf("%c", 'E');
 
 		}
@@ -190,7 +191,7 @@ void CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY)
 		}
 
 		// 다음 좌표가 벽이면 불가
-		if (Maze[NextX * MazeCols + NextY] == WALL)
+		if (GetMazeData(NextX, NextY) == WALL)
 		{
 			DirArr[i] = false;
 			continue;
@@ -473,7 +474,7 @@ void Homework05_Run()
 		PlayerY += Dy[Dir];
 
 		// 5. 종료 확인
-		if (Maze[PlayerX * MazeCols + PlayerY] == END)
+		if (GetMazeData(PlayerX, PlayerY) == END)
 		{
 			printf("탈출하였습니다! \n");
 			break;
@@ -512,5 +513,15 @@ void Homework05_Run()
 		Dir = EDirLength;
 	}
 	delete[] Maze;
+	Maze = nullptr;
+}
+EMapEnv GetMazeData(int X, int Y)
+{
+	return EMapEnv(Maze[Y * MazeCols + X]);
+}
+
+void SetMazeData(int X, int Y, EMapEnv Data)
+{
+	Maze[Y * MazeCols + X] = Data;
 }
 #pragma endregion
