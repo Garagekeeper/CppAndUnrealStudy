@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Day0527.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -97,12 +98,12 @@ void Day0527_Run()
 
 	for (int i = 0; i < sizeof(TestCasePass2) / sizeof(TestCasePass2[0]); i++)
 	{
-		if (CompareFloat(MyAtoF(TestCasePass2[i]), TestCaseResult2[i]))
+		if (IsFloatEqual(MyAtoF(TestCasePass2[i]), TestCaseResult2[i]))
 			PassCnt++;
 		else
 			FailCnt++;
 
-		printf("[%s] = [%f] : %s\n", TestCasePass2[i], MyAtoF(TestCasePass2[i]), CompareFloat(MyAtoF(TestCasePass2[i]), TestCaseResult2[i]) ? "Pass" : "Fail");
+		printf("[%s] = [%f] : %s\n", TestCasePass2[i], MyAtoF(TestCasePass2[i]), IsFloatEqual(MyAtoF(TestCasePass2[i]), TestCaseResult2[i]) ? "Pass" : "Fail");
 	}
 	printf("\nPassCnt = %d, Failcnt = %d\n\n", PassCnt, FailCnt);
 
@@ -114,12 +115,12 @@ void Day0527_Run()
 
 	for (int i = 0; i < sizeof(TestCaseFail2) / sizeof(TestCasePass2[0]); i++)
 	{
-		if (CompareFloat(MyAtoF(TestCaseFail2[i]), 0))
+		if (IsFloatEqual(MyAtoF(TestCaseFail2[i]), 0))
 			PassCnt++;
 		else
 			FailCnt++;
 
-		printf("[%s] = [%f] : %s\n", TestCaseFail2[i], MyAtoF(TestCaseFail2[i]), CompareFloat(MyAtoF(TestCaseFail2[i]), 0) ? "Pass" : "Fail");
+		printf("[%s] = [%f] : %s\n", TestCaseFail2[i], MyAtoF(TestCaseFail2[i]), IsFloatEqual(MyAtoF(TestCaseFail2[i]), 0) ? "Pass" : "Fail");
 	}
 	printf("\nPassCnt = %d, Failcnt = %d\n\n", PassCnt, FailCnt);
 }

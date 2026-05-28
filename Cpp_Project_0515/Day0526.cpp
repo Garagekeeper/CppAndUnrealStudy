@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void Day0526_Run()
+void Day0526_Run1()
 {
 	//int Array[5] = { 1,2,3,4,5 };
 	//int* pArray = Array;
@@ -105,8 +105,8 @@ const int RandEncounterPerCentage = 30;
 const int MazeRows = 10;
 const int MazeCols = 20;
 
-int PlayerX = 0;
-int PlayerY = 0;
+int Day0526PlayerX = 0;
+int Day0526PlayerY = 0;
 
 //int Maze[MazeRows][MazeCols] =
 //{
@@ -136,27 +136,27 @@ int PlayerY = 0;
 //	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 //};
 
-int* Maze = nullptr;
+int* Day0526Maze = nullptr;
 
-int RandomRange(int Min, int Max)
+int Day0526RandomRange(int Min, int Max)
 {
 	return rand() % (Max - Min + 1) + Min;
 }
 
-int RandomRange(int Max)
+int Day0526RandomRange(int Max)
 {
-	return RandomRange(0, Max);
+	return Day0526RandomRange(0, Max);
 }
 
-void Print2DMap()
+void Day0526Print2DMap()
 {
 
 	for (int i = 0; i < MazeRows; i++)
 	{
 		for (int j = 0; j < MazeCols; j++)
 		{
-			EMapEnv TileData = GetMazeData(i, j);
-			if ((i == PlayerX) && (j == PlayerY))
+			Day0526EMapEnv TileData = Day0526GetMazeData(i, j);
+			if ((i == Day0526PlayerX) && (j == Day0526PlayerY))
 				printf("%c", 'P');
 			else if (TileData == ROAD)
 				printf("%c", '.');
@@ -173,7 +173,7 @@ void Print2DMap()
 	}
 }
 
-void CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY)
+void Day0526CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY)
 {
 
 	// 상 하 좌 우 방향으로 갈 수 있는지 기록
@@ -191,7 +191,7 @@ void CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY)
 		}
 
 		// 다음 좌표가 벽이면 불가
-		if (GetMazeData(NextX, NextY) == WALL)
+		if (Day0526GetMazeData(NextX, NextY) == WALL)
 		{
 			DirArr[i] = false;
 			continue;
@@ -202,13 +202,13 @@ void CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY)
 	}
 }
 
-void PrintChoiceScreen(bool* DirArr)
+void Day0526PrintChoiceScreen(bool* DirArr)
 {
 	printf("이동할 방향을 선택하세요 (w: 위, s: 아래, a: 왼쪽, d: 오른쪽)\n");
 	for (int i = 0; i < EDirLength; i++)
 	{
 		if (DirArr[i] == false) continue;
-		switch (EDir(i))
+		switch (Day0526EDir(i))
 		{
 			case UP:
 				printf("w(↑) ");
@@ -228,7 +228,7 @@ void PrintChoiceScreen(bool* DirArr)
 	printf("방향 입력: ");
 }
 
-int GetDirInput()
+int Day0526GetDirInput()
 {
 	char Input;
 	cin >> Input;
@@ -246,7 +246,7 @@ int GetDirInput()
 	return EDirLength;
 }
 
-int RandEncounter()
+int Day0526RandEncounter()
 {
 	/*
 	EncounterNone	= 0, (50)
@@ -257,7 +257,7 @@ int RandEncounter()
 	// 0부터 100까지 랜덤값이 29보다 작으면 (30프로)
 	// Todo 검즘 한번하기
 	int Flag = 0;
-	int RandVal = RandomRange(100);
+	int RandVal = Day0526RandomRange(100);
 	if (RandVal < 50)
 	{
 		return Flag;
@@ -281,41 +281,41 @@ int RandEncounter()
 	return Flag;
 }
 
-void PrintHP(int YourHP, int MonsterHP)
+void Day0526PrintHP(int YourHP, int MonsterHP)
 {
 	printf("\n당신의 체력: %d\n", YourHP);
 	printf("몬스터의 체력: %d\n\n", MonsterHP);
 }
 
-void PrintHP(int YourHP)
+void Day0526PrintHP(int YourHP)
 {
 	printf("\n당신의 체력: %d\n", YourHP);
 }
 
-int RollDice(int DiceMax)
+int Day0526RollDice(int DiceMax)
 {
-	int Res = RandomRange(1, DiceMax);
+	int Res = Day0526RandomRange(1, DiceMax);
 	printf("주사위의 눈 : %d\n", Res);
 	return Res;
 }
 
-int GetAttackDamage(int BaseDamage, int DiceMax)
+int Day0526GetAttackDamage(int BaseDamage, int DiceMax)
 {
 
 	// 여기서 입력할때까지 대기
 
 	cin.get();
-	return BaseDamage + RollDice(DiceMax);
+	return BaseDamage + Day0526RollDice(DiceMax);
 }
 
-bool IsCritical(int CriticalPercentage)
+bool Day0526IsCritical(int CriticalPercentage)
 {
-	if (RandomRange(100) < CriticalPercentage)
+	if (Day0526RandomRange(100) < CriticalPercentage)
 		return true;
 	return false;
 }
 
-bool TurnBasedCombat(int PlayerHp)
+bool Day0526TurnBasedCombat(int PlayerHp)
 {
 	const int BaseDamage = 5;
 	const int DiceMax = 10;
@@ -345,15 +345,15 @@ bool TurnBasedCombat(int PlayerHp)
 		system("cls");
 
 		printf("\n-----------------당신의 차례------------------------\n");
-		PrintHP(YourHP, MonsterHP);
+		Day0526PrintHP(YourHP, MonsterHP);
 
 		printf("10면체 주사위를 굴려 5 + [주사위 눈금]의 데미지를 줄 수 있습니다.");
 		printf("엔터를 눌러서 주사위를 굴려주세요\n");
 
 		//데미지 산출 
-		Damage = GetAttackDamage(BaseDamage, DiceMax);
+		Damage = Day0526GetAttackDamage(BaseDamage, DiceMax);
 		//최종 데미지 계산
-		IsCrit = IsCritical(CriticalPercentage);
+		IsCrit = Day0526IsCritical(CriticalPercentage);
 		FinalDamage = IsCrit ? Damage * 2 : Damage;
 		// 공격 처리
 		MonsterHP -= FinalDamage;
@@ -373,7 +373,7 @@ bool TurnBasedCombat(int PlayerHp)
 		//-----------------------
 		//2. 몬스터 턴			|
 		//-----------------------
-		PrintHP(YourHP, MonsterHP);
+		Day0526PrintHP(YourHP, MonsterHP);
 		// 값 초기화
 		Damage = 0;
 		FinalDamage = 0;
@@ -382,9 +382,9 @@ bool TurnBasedCombat(int PlayerHp)
 		printf("엔터를 눌러 적의 주사위를 확인하세요\n");
 
 		//데미지 산출 
-		Damage = GetAttackDamage(BaseDamage, DiceMax);
+		Damage = Day0526GetAttackDamage(BaseDamage, DiceMax);
 		//최종 데미지 계산
-		IsCrit = IsCritical(CriticalPercentage);
+		IsCrit = Day0526IsCritical(CriticalPercentage);
 		FinalDamage = IsCrit ? Damage * 2 : Damage;
 		// 공격 처리
 		YourHP -= FinalDamage;
@@ -412,7 +412,7 @@ bool TurnBasedCombat(int PlayerHp)
 void Homework05_Run()
 {
 	const int InitailPlayerHp = 100;
-	Maze = new int[MazeCols * MazeRows]
+	Day0526Maze = new int[MazeCols * MazeRows]
 		{
 			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 			1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1,
@@ -439,8 +439,8 @@ void Homework05_Run()
 	bool CanGo[EDirLength] = { false, false, false, false };
 
 	// 시작 좌표 설정
-	PlayerX = 1;
-	PlayerY = 1;
+	Day0526PlayerX = 1;
+	Day0526PlayerY = 1;
 	int Dir = EDirLength;
 
 	int PlayerHp = InitailPlayerHp;
@@ -450,19 +450,19 @@ void Homework05_Run()
 	{
 		system("cls");
 		// 0. 격자맵 출력
-		Print2DMap();
+		Day0526Print2DMap();
 		
-		PrintHP(PlayerHp);
+		Day0526PrintHP(PlayerHp);
 		// 1. 이동가능 방향 판단
-		CheckDirCanGO(CanGo, PlayerX, PlayerY);
+		Day0526CheckDirCanGO(CanGo, Day0526PlayerX, Day0526PlayerY);
 
 
 		// 3. 이동 방향 입력
 		while (Dir == EDirLength)
 		{
 			// 이동 선택 화면 출력
-			PrintChoiceScreen(CanGo);
-			Dir = GetDirInput();
+			Day0526PrintChoiceScreen(CanGo);
+			Dir = Day0526GetDirInput();
 			if (Dir == EDirLength || CanGo[Dir] == false)
 			{
 				printf("\n\n올바른 방향을 입력하세요\n\n");
@@ -470,11 +470,11 @@ void Homework05_Run()
 			}
 		}
 		// 4.이동처리
-		PlayerX += Dx[Dir];
-		PlayerY += Dy[Dir];
+		Day0526PlayerX += Dx[Dir];
+		Day0526PlayerY += Dy[Dir];
 
 		// 5. 종료 확인
-		if (GetMazeData(PlayerX, PlayerY) == END)
+		if (Day0526GetMazeData(Day0526PlayerX, Day0526PlayerY) == END)
 		{
 			printf("탈출하였습니다! \n");
 			break;
@@ -483,13 +483,13 @@ void Homework05_Run()
 
 		// 6. 일정확률로 적을 만남 (현재는 한번만 만남, 이래야 테스트 원활)
 		bool bWon = false;
-		int EncounterFlag = RandEncounter();
+		int EncounterFlag = Day0526RandEncounter();
 		if (EncounterFlag != EncounterNone)
 		{
 			
 			if (EncounterFlag & 1 << EncounterCombat)
 			{
-				bWon = TurnBasedCombat(InitailPlayerHp);
+				bWon = Day0526TurnBasedCombat(InitailPlayerHp);
 				if (!bWon) break;
 			}
 			else if (EncounterFlag & 1 << EncounterHeal)
@@ -512,16 +512,16 @@ void Homework05_Run()
 		// 입력 변수 초기화
 		Dir = EDirLength;
 	}
-	delete[] Maze;
-	Maze = nullptr;
+	delete[] Day0526Maze;
+	Day0526Maze = nullptr;
 }
-EMapEnv GetMazeData(int X, int Y)
+Day0526EMapEnv Day0526GetMazeData(int X, int Y)
 {
-	return EMapEnv(Maze[Y * MazeCols + X]);
+	return Day0526EMapEnv(Day0526Maze[Y * MazeCols + X]);
 }
 
-void SetMazeData(int X, int Y, EMapEnv Data)
+void Day0526SetMazeData(int X, int Y, Day0526EMapEnv Data)
 {
-	Maze[Y * MazeCols + X] = Data;
+	Day0526Maze[Y * MazeCols + X] = Data;
 }
 #pragma endregion

@@ -4,7 +4,7 @@
 using namespace std;
 
 // 미로 배열
-int Maze[MazeRows][MazeCols] =
+int Day0526Maze[MazeRows][MazeCols] =
 {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	{1,2,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,1,0,1},

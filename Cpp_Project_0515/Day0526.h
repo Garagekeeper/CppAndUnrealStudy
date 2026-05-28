@@ -102,7 +102,7 @@
 	4방향 bool 변수를 비트 플래그로 처리하자
 */
 
-void Day0526_Run();
+void Day0526_Run1();
 void Day0526_PointerParameter(int* Data, int Size);
 void Day0526_Example01(int* a, int* b);
 int Day0526_Example02(int* Arr, int Size);
@@ -110,7 +110,7 @@ void Day0526_Example03(int* Arr, int Size);
 
 
 #pragma region Maze
-enum EMapEnv
+enum Day0526EMapEnv
 {
 	ROAD,
 	WALL,
@@ -119,7 +119,7 @@ enum EMapEnv
 	PLAYER,
 };
 
-enum EDir
+enum Day0526EDir
 {
 	UP,
 	Down,
@@ -128,7 +128,7 @@ enum EDir
 	EDirLength
 };
 
-enum EEncounter
+enum Day0526EEncounter
 {
 	EncounterNone	= 0,
 	EncounterCombat = 1,
@@ -142,65 +142,65 @@ enum EEncounter
 /// <param name="Min">랜덤값의 최소</param>
 /// <param name="Max">랜덤값의 최대</param>
 /// <returns>Min 부터 Max사이의 랜덤 값</returns>
-int RandomRange(int Min, int Max);
+int Day0526RandomRange(int Min, int Max);
 
 /// <summary>
 /// 0 부터 Max사이의 랜덤 값을 반환하는 함수
 /// </summary>
 /// <param name="Max">랜덤값의 최대</param>
 /// <returns>0 부터 Max사이의 랜덤 값</returns>
-int RandomRange(int Max);
+int Day0526RandomRange(int Max);
 
 
 /// <summary>
 /// 맵을 출력하는 함수
 /// </summary>
-void Print2DMap();
+void Day0526Print2DMap();
 /// <summary>
 /// 주어진 좌표를 기준으로 상하좌우로 갈 수 있는지 판단하는 함수
 /// </summary>
 /// <param name="DirArr">상하좌우의 가능여부를 담는 배열</param>
 /// <param name="PlayerX">플레이어의 X좌표</param>
 /// <param name="PlayerY">플레이어의 ㅛ좌표</param>
-void CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY);
+void Day0526CheckDirCanGO(bool* DirArr, int PlayerX, int PlayerY);
 
 /// <summary>
 /// 이동할 수 있는 방향을 출력하는 함수
 /// </summary>
 /// <param name="DirArr">상하좌우의 가능여부를 담는 배열</param>
-void PrintChoiceScreen(bool* DirArr);
+void Day0526PrintChoiceScreen(bool* DirArr);
 
 /// <summary>
 /// 방향을 입력받는 함수 (wasd로 입력받아 방향값으로 반환)
 /// </summary>
 /// <returns>입력받은 방향, 비정상적인 값일 경우 EDirLength 반환</returns>
-int GetDirInput();
+int Day0526GetDirInput();
 
 /// <summary>
 /// 랜덤 인카운더를 결정하는 함수
 /// </summary>
 /// <returns> 랜덤인카운터 플래그</returns>
-int RandEncounter();
+int Day0526RandEncounter();
 
 /// <summary>
 /// 나와 몬스터의 체력을 출력하는 함수
 /// </summary>
 /// <param name="YoursHp">당신의 체력</param>
 /// <param name="MonstersHP">몬스터의 체력</param>
-void PrintHP(int YoursHp, int MonstersHP);
+void Day0526PrintHP(int YoursHp, int MonstersHP);
 
 /// <summary>
 /// 나와 체력을 출력하는 함수
 /// </summary>
 /// <param name="YoursHp">당신의 체력</param>
-void PrintHP(int YoursHp);
+void Day0526PrintHP(int YoursHp);
 
 /// <summary>
 /// DiceMax면체의 주사위를 굴려서 반환하는 함수
 /// </summary>
 /// <param name="DiceMax">주사위의 최대값</param>
 /// <returns></returns>
-int RollDice(int DiceMax);
+int Day0526RollDice(int DiceMax);
 
 /// <summary>
 /// 공격 데미지를 계산해서 반환하는 함수
@@ -208,20 +208,20 @@ int RollDice(int DiceMax);
 /// <param name="BaseDamage">기본 데미지</param>
 /// <param name="DiceMax">주사위의 최대값</param>
 /// <returns></returns>
-int GetAttackDamage(int BaseDamage, int DiceMax);
+int Day0526GetAttackDamage(int BaseDamage, int DiceMax);
 
 /// <summary>
 /// 크리티컬의 적용여부 반환
 /// </summary>
 /// <param name="CriticalPercentage">크리티컬 페선테이지</param>
 /// <returns>크리티컬 여부</returns>
-bool IsCritical(int CriticalPercentage);
+bool Day0526IsCritical(int CriticalPercentage);
 /// <summary>
 /// 턴제 전투를 진행하는 함수
 /// </summary>
 /// /// <param name="InitailPlayerHp">플레이어 체력</param>
 /// <returns>승리 여부</returns>
-bool TurnBasedCombat(int PlayerHp);
+bool Day0526TurnBasedCombat(int PlayerHp);
 void Homework05_Run();
 
 /// <summary>
@@ -230,12 +230,12 @@ void Homework05_Run();
 /// <param name="X">X좌표</param>
 /// <param name="Y">Y좌표</param>
 /// <returns>해당 위치의 데이터</returns>
-EMapEnv GetMazeData(int X, int Y);
+Day0526EMapEnv Day0526GetMazeData(int X, int Y);
 /// <summary>
 /// 해당 위치의 타일 정보를 세팅하는 함수
 /// </summary>
 /// <param name="X">X좌표</param>
 /// <param name="Y">Y좌표</param>
 /// <param name="Data">세팅할 값</param>
-void	SetMazeData(int X, int Y, EMapEnv Data);
+void	Day0526SetMazeData(int X, int Y, Day0526EMapEnv Data);
 #pragma endregion

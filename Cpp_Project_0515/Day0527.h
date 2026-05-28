@@ -53,9 +53,6 @@ int MyAtoI(const char* _String);
 float MyAtoF(const char* _String);
 bool CompareFloat(float A, float B);
 
-void Day0527_Prac01();
-
-
 /*
 
 	// 처음 공백제거
