@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include "Utils.h"
+#include "MazePrac.h"
 
-#include "Day0528_Prac1.h"
 using namespace std;
 
 int MazeRows = 10;
@@ -9,24 +10,19 @@ int MazeCols = 20;
 
 int* Maze = nullptr;
 
-void Day0528_Prac1_Run()
+void MazePrac1_Run()
 {
-	Day0528_MazeAdventure();
-}
-
-int RandomRange(int Min, int Max)
-{
-	return rand() % (Max - Min + 1) + Min;
-}
-
-int RandomRange(int Max)
-{
-	return RandomRange(0, Max);
+	MazeAdventure();
 }
 
 EMapEnv GetMazeData(int X, int Y)
 {
 	return EMapEnv(Maze[X * MazeCols + Y]);
+}
+
+EMapEnv GetMazeData(Position* Pos)
+{
+	return EMapEnv(Maze[Pos->X * MazeCols + Pos->Y]);
 }
 
 void SetMazeData(int X, int Y, EMapEnv Data)
@@ -42,7 +38,9 @@ void Print2DMap(Player& player)
 		for (int j = 0; j < MazeCols; j++)
 		{
 			EMapEnv TileData = GetMazeData(i, j);
-			if ((i == player.PosX) && (j == player.PosY))
+
+			Position TargetPos(i,j);
+			if (*(player.Pos) == TargetPos)
 				printf("%c", 'P');
 			else if (TileData == ROAD)
 				printf("%c", '.');
@@ -55,19 +53,17 @@ void Print2DMap(Player& player)
 
 		}
 		printf("\n");
-
 	}
 }
 
 void CheckDirCanGO(bool* DirArr, struct Player& player)
 {
-
 	// 상 하 좌 우 방향으로 갈 수 있는지 기록
 	for (int i = 0; i < 4; i++)
 	{
 		// 다음 좌표
-		int NextX = player.PosX + Dx[i];
-		int NextY = player.PosY + Dy[i];
+		int NextX = player.Pos->X + Dx[i];
+		int NextY = player.Pos->Y + Dy[i];
 
 		// 다음 좌표가 맵의 밖이면 불가
 		if (NextX < 0 || NextX >= MazeRows || NextY < 0 || NextY >= MazeCols)
@@ -134,43 +130,29 @@ int GetDirInput()
 
 int RandEncounter()
 {
-	/*
-	EncounterNone	= 0, (50)
-	EncounterCombat	= 1, (15)
-	EncounterHeal	= 2, (20)
-	EncounterTrap	= 3, (15)
-	*/
-	// 0부터 100까지 랜덤값이 29보다 작으면 (30프로)
-	// Todo 검즘 한번하기
+
 	int Flag = 0;
 	int RandVal = RandomRange(100);
-	if (RandVal < 50)
-	{
-		return Flag;
-	}
-	else if (RandVal < 65)
+	if (RandEncounterNone <= RandVal && RandVal < RandEncounterCombat)
 	{
 		Flag |= (1 << EncounterCombat);
-		return Flag;
 	}
-	else if (RandVal < 85)
+	else if (RandVal < RandEncounterHeal)
 	{
 		Flag |= (1 << EncounterHeal);
-		return Flag;
 	}
-	else if (RandVal < 100)
+	else if (RandVal < RandEncounterTrap)
 	{
 		Flag |= (1 << EncounterTrap);
-		return Flag;
 	}
 
 	return Flag;
 }
 
-void PrintHP(float YourHP, float MonsterHP)
+void PrintHP(Player& InPlayer, Enemy& InEnemy)
 {
-	printf("\n당신의 체력: %.1f\n", YourHP);
-	printf("몬스터의 체력: %.1f\n\n", MonsterHP);
+	printf("\n당신의 체력: %d\n", InPlayer.HP);
+	printf("몬스터의 체력: %d\n\n", InEnemy.HP);
 }
 
 int RollDice(int DiceMax)
@@ -180,7 +162,7 @@ int RollDice(int DiceMax)
 	return Res;
 }
 
-int GetAttackDamage(float BaseDamage, int DiceMax)
+int GetAttackDamage(int BaseDamage, int DiceMax)
 {
 
 	// 여기서 입력할때까지 대기
@@ -201,7 +183,7 @@ bool TurnBasedCombat(struct Player& player)
 	const int DiceMax = 10;
 
 
-	Enemy Orc(rand() / (float)RAND_MAX);
+	Enemy Orc(GetRandom());
 
 	bool IsCrit = false;
 	int Damage = 0;
@@ -222,21 +204,21 @@ bool TurnBasedCombat(struct Player& player)
 		system("cls");
 
 		printf("\n-----------------당신의 차례------------------------\n");
-		PrintHP(player.HP, Orc.HP);
+		PrintHP(player, Orc);
 
 		printf("10면체 주사위를 굴려 5 + [주사위 눈금]의 데미지를 줄 수 있습니다.");
 		printf("엔터를 눌러서 주사위를 굴려주세요\n");
 
 		//데미지 산출 
 		Damage = GetAttackDamage(player.BaseAttackDamage, DiceMax);
-		//최종 데미지 계산
 		IsCrit = IsCritical(player.CriticalPercentage);
 		FinalDamage = IsCrit ? Damage * 2 : Damage;
+
 		// 공격 처리
-		Orc.HP -= FinalDamage;
+		Orc.EGetDamage(FinalDamage);
+
 		if (IsCrit)
 			printf("\n 크리티컬이 발생하여");
-
 		printf("%d의 데미지로 적을 공격했습니다!.\n", (int)FinalDamage);
 
 		// 종료조건 체크
@@ -250,7 +232,7 @@ bool TurnBasedCombat(struct Player& player)
 		//-----------------------
 		//2. 몬스터 턴			|
 		//-----------------------
-		PrintHP(player.HP, Orc.HP);
+		PrintHP(player, Orc);
 		// 값 초기화
 		Damage = 0;
 		FinalDamage = 0;
@@ -260,11 +242,12 @@ bool TurnBasedCombat(struct Player& player)
 
 		//데미지 산출 
 		Damage = GetAttackDamage(Orc.AttackDamage, DiceMax);
-		//최종 데미지 계산
 		IsCrit = IsCritical(Orc.CriticalPercentage);
 		FinalDamage = IsCrit ? Damage * 2 : Damage;
+
 		// 공격 처리
-		player.HP -= FinalDamage;
+		player.GetDamage(FinalDamage);
+
 		if (IsCrit)
 			printf("\n 크리티컬이 발생하여");
 
@@ -280,7 +263,7 @@ bool TurnBasedCombat(struct Player& player)
 	{
 		printf("당신이 승리하였습니다.");
 		printf("보상으로 %d원을 획득합니다.", Orc.Reward);
-		player.Money += Orc.Reward;
+		player.GetReward(Orc.Reward);
 		return true;
 	}
 
@@ -339,7 +322,7 @@ void InitMap()
 	}
 }
 
-void Day0528_MazeAdventure()
+void MazeAdventure()
 {
 	InitMap();
 	
@@ -390,11 +373,12 @@ void Day0528_MazeAdventure()
 			}
 		}
 		// 4.이동처리
-		player.PosX += Dx[Dir];
-		player.PosY += Dy[Dir];
+		//player.MoveTo(Dx[Dir], Dy[Dir]);
+		Position Delta(Dx[Dir], Dy[Dir]);
+		*(player.Pos) += Delta;
 
 		// 5. 종료 확인
-		if (GetMazeData(player.PosX, player.PosY) == END)
+		if (GetMazeData(player.Pos) == END)
 		{
 			printf("탈출하였습니다! \n");
 			break;
@@ -406,7 +390,6 @@ void Day0528_MazeAdventure()
 		int EncounterFlag = RandEncounter();
 		if (EncounterFlag != EncounterNone)
 		{
-
 			if (EncounterFlag & 1 << EncounterCombat)
 			{
 				bWon = TurnBasedCombat(player);
@@ -414,13 +397,13 @@ void Day0528_MazeAdventure()
 			}
 			else if (EncounterFlag & 1 << EncounterHeal)
 			{
-				player.HP += 10;
+				player.Heal(RandEncounterHealAmout);
 				printf("쉼터를 만나 체력을 10 회복 합니다\n");
 
 			}
 			else if (EncounterFlag & 1 << EncounterTrap)
 			{
-				player.HP -= 10;
+				player.GetDamage(RandEncounterTrapDealAmout);
 				printf("함정에 걸려 현제 체력이 10 감소 합니다.\n");
 				if (player.HP <= 0)
 				{
@@ -461,6 +444,6 @@ void FindStart(int& OutX, int& OutY)
 
 void PrintStatus(Player& player)
 {
-	printf("\n당신의   체력: %.1f", player.HP);
+	printf("\n당신의   체력: %d", player.HP);
 	printf("\n당신의 소지금: %d\n", player.Money);
 }

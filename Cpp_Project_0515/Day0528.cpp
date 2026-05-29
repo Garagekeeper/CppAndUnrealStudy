@@ -17,6 +17,7 @@ void Day0528_String()
 	string Str1 = "Hello";
 	string Str2("Hello World! Hello World! Hello World!");
 
+	Str1 + Str2;
 
 	Day0528_Exam01(Str2, 'W');
 	Day0528_Exam01(Str2, 'A');

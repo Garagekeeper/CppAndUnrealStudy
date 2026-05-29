@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Maze">
+      <UniqueIdentifier>{1ffb9d39-9984-4f89-a3f3-f208b4d4f915}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Project.cpp">
@@ -42,8 +45,17 @@
     <ClCompile Include="Utils.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Day0528_Prac1.cpp">
+    <ClCompile Include="MazePrac.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0529.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Maze</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,10 +95,22 @@
     <ClInclude Include="Day0528.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>소스 파일</Filter>
+    <ClInclude Include="MazePrac.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Day0528_Prac1.h">
+    <ClInclude Include="Day0529.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeCommon.h">
+      <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
