@@ -131,6 +131,7 @@
     <ClCompile Include="Day0526.cpp" />
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
+    <ClCompile Include="Day0601.cpp" />
     <ClCompile Include="MazePrac.cpp" />
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Day0526.h" />
     <ClInclude Include="Day0527.h" />
     <ClInclude Include="Day0528.h" />
+    <ClInclude Include="Day0601.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Enemy.h" />
