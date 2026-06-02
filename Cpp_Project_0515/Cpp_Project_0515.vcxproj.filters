@@ -16,6 +16,9 @@
     <Filter Include="Maze">
       <UniqueIdentifier>{1ffb9d39-9984-4f89-a3f3-f208b4d4f915}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Maze\Creature">
+      <UniqueIdentifier>{7a810e79-a706-4785-8b8b-f4a1c0f7d9be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Project.cpp">
@@ -51,11 +54,29 @@
     <ClCompile Include="Day0529.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Maze</Filter>
+    <ClCompile Include="Day0601.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Maze</Filter>
+    <ClCompile Include="Day0602.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Maze\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Maze\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Maze\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Orc.cpp">
+      <Filter>Maze\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Slime.cpp">
+      <Filter>Maze\Creature</Filter>
+    </ClCompile>
+    <ClCompile Include="Wyvern.cpp">
+      <Filter>Maze\Creature</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,14 +125,32 @@
     <ClInclude Include="Player.h">
       <Filter>Maze</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Maze</Filter>
-    </ClInclude>
     <ClInclude Include="MazeCommon.h">
       <Filter>Maze</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0601.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0602.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Maze\Creature</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Maze\Creature</Filter>
+    </ClInclude>
+    <ClInclude Include="Orc.h">
+      <Filter>Maze\Creature</Filter>
+    </ClInclude>
+    <ClInclude Include="Slime.h">
+      <Filter>Maze\Creature</Filter>
+    </ClInclude>
+    <ClInclude Include="Wyvern.h">
+      <Filter>Maze\Creature</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

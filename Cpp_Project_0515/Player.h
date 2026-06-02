@@ -1,29 +1,34 @@
 #pragma once
 
+#include "Actor.h"
 #include "MazeCommon.h"
 
-struct Player
-{
-	const int CriticalPercentage = 10;
-	const int MaxHP = 100;
-	
-	int HP = 100;
-	int BaseAttackDamage = 5;
+class Player : public Actor
+{	
+protected:
 	int Money = 0;
 	
 	Position* Pos;
 
-	Player(int PosX, int PosY) : HP(100), BaseAttackDamage(5), Money(0) 
+public:
+	Player(int PosX, int PosY) 
+		: Actor(100,100, 5) 
 	{
 		Pos = new Position(PosX, PosY);
+		Money = 0;
 	}
-	void Heal(float Amount);
-	void GetDamage(int Amount);
-	void GetReward(int Amount);
-	void MoveTo(int Nx, int Ny);
-
-	~Player()
+	virtual ~Player()
 	{
 		delete[] Pos;
 	}
+
+	void GetReward(int Amount);
+	void MoveTo(int Nx, int Ny);
+	void PrintStatus();
+	virtual void OnDeath() override;
+
+	virtual void ApplyDamage(Actor* Target, int AdditiveDmg) override;
+
+	inline Position* GetPos() { return Pos; }
+	
 };

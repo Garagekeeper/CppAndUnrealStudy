@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Cpp_Project.cpp" />
     <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Day0521_2_1.cpp" />
@@ -132,13 +133,18 @@
     <ClCompile Include="Day0527.cpp" />
     <ClCompile Include="Day0528.cpp" />
     <ClCompile Include="Day0601.cpp" />
+    <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="MazePrac.cpp" />
     <ClCompile Include="Day0529.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Slime.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Wyvern.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
@@ -152,12 +158,16 @@
     <ClInclude Include="Day0527.h" />
     <ClInclude Include="Day0528.h" />
     <ClInclude Include="Day0601.h" />
+    <ClInclude Include="Day0602.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="MazeCommon.h" />
+    <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Slime.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Wyvern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

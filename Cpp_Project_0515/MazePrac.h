@@ -2,7 +2,10 @@
 
 //#include "MazeCommon.h";
 #include "Player.h"
-#include "Enemy.h"
+#include "Monster.h"
+#include "Orc.h"
+#include "Slime.h"
+#include "Wyvern.h"
 
 /// <summary>
 /// 해당 위치의 타일 정보를 리턴하는 함수
@@ -30,7 +33,7 @@ void Print2DMap(Player& player);
 /// <param name="DirArr">상하좌우의 가능여부를 담는 배열</param>
 /// <param name="PlayerX">플레이어의 X좌표</param>
 /// <param name="PlayerPosY">플레이어의 ㅛ좌표</param>
-void CheckDirCanGO(bool* DirArr, struct Player& player);
+void CheckDirCanGO(bool* DirArr, Player& player);
 
 /// <summary>
 /// 이동할 수 있는 방향을 출력하는 함수
@@ -50,12 +53,14 @@ int GetDirInput();
 /// <returns> 랜덤인카운터 플래그</returns>
 int RandEncounter();
 
+int GetRandMonsterIndex();
+
 /// <summary>
 /// 나와 몬스터의 체력을 출력하는 함수
 /// </summary>
 /// <param name="YoursHp">당신의 체력</param>
 /// <param name="MonstersHP">몬스터의 체력</param>
-void PrintHP(Player& InPlayer, Enemy& InEnemy);
+void PrintHP(Player& InPlayer, Monster& monster);
 
 /// <summary>
 /// DiceMax면체의 주사위를 굴려서 반환하는 함수
@@ -70,14 +75,8 @@ int RollDice(int DiceMax);
 /// <param name="BaseDamage">기본 데미지</param>
 /// <param name="DiceMax">주사위의 최대값</param>
 /// <returns></returns>
-int GetAttackDamage(int BaseDamage, int DiceMax);
+int GetAdditiveDamageByDice(int DiceMax);
 
-/// <summary>
-/// 크리티컬의 적용여부 반환
-/// </summary>
-/// <param name="CriticalPercentage">크리티컬 페선테이지</param>
-/// <returns>크리티컬 여부</returns>
-bool IsCritical(int CriticalPercentage);
 /// <summary>
 /// 턴제 전투를 진행하는 함수
 /// </summary>
@@ -97,4 +96,3 @@ void InitMap();
 void MazeAdventure();
 
 void FindStart(int& OutX, int& OutY);
-void PrintStatus(Player& player);

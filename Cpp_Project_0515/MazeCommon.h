@@ -13,6 +13,10 @@ const int RandEncounterTrap				= 100;
 const int RandEncounterHealAmout		= 10;
 const int RandEncounterTrapDealAmout	= 10;
 
+const int RandMonsterOrc				= 33;
+const int RandMonsterSlime				= 66;
+const int RnadMonsterWyvern				= 100;
+
 //U, D, L, R 순의 방향 벡터
 const int Dx[4]							= { -1, 1, 0, 0 };
 const int Dy[4]							= { 0, 0, -1, 1 };

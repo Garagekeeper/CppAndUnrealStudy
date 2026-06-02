@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
-#include "Day0529.h"
+#include "Day0602.h"
 #include "MazePrac.h"
 using namespace std;
 
@@ -14,4 +14,6 @@ int main()
 
 	//Day0529_Run();
 	MazePrac1_Run();
+
+	//Day0602_Run();
 }
