@@ -6,29 +6,21 @@
 class Player : public Actor
 {	
 protected:
-	int Money = 0;
+	int					Money = 0;
 	
-	Position* Pos;
+	Position*			Pos;
 
 public:
-	Player(int PosX, int PosY) 
-		: Actor(100,100, 5) 
-	{
-		Pos = new Position(PosX, PosY);
-		Money = 0;
-	}
-	virtual ~Player()
-	{
-		delete[] Pos;
-	}
+						Player(int PosX, int PosY);
+	virtual				~Player() override;
 
-	void GetReward(int Amount);
-	void MoveTo(int Nx, int Ny);
-	void PrintStatus();
-	virtual void OnDeath() override;
+	void				GetReward(int Amount);
+	void				MoveTo(int Nx, int Ny);
+	virtual void		PrintStatus() override;
 
-	virtual void ApplyDamage(Actor* Target, int AdditiveDmg) override;
+	virtual void		OnDeath() override;
+	virtual void		ApplyDamage(Actor* Target, int AdditiveDmg);
 
-	inline Position* GetPos() { return Pos; }
+	inline Position*	GetPos() { return Pos; }
 	
 };

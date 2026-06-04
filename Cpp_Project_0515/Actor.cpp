@@ -2,6 +2,20 @@
 #include "Utils.h"
 #include "Actor.h"
 
+Actor::Actor(const float Modifier)
+{
+	{
+		Hp += static_cast<int>(Hp * Modifier);
+		AttackDamage += static_cast<int>(AttackDamage * Modifier);
+	}
+}
+
+Actor::Actor(const int Inlevel)
+{
+	Hp *= Inlevel;
+	AttackDamage *= Inlevel;
+}
+
 void Actor::TakeHeal(int Amount)
 {
 	Hp += Amount;
@@ -10,6 +24,12 @@ void Actor::TakeHeal(int Amount)
 
 void Actor::ApplyDamage(Actor* Target, int AdditiveDmg)
 {
+	if (!CheckActorPointerValid(Target))
+	{
+		printf("!!!포인터가 유효하지 않습니다.!!!\n");
+		return;
+	}
+
 	int FinalDamage = AttackDamage + AdditiveDmg;
 	int CritRatio = RandomRange(100) < CriticlaPerCentage ? 2 : 1;
 	if (CritRatio == 2)
@@ -20,6 +40,12 @@ void Actor::ApplyDamage(Actor* Target, int AdditiveDmg)
 
 void Actor::TakeDamage(Actor* From, int Amount)
 {
+	if (!CheckActorPointerValid(From))
+	{
+		printf("!!!포인터가 유효하지 않습니다.!!!\n");
+		return;
+	}
+
 	Hp -= Amount ;
 	if (Hp <= 0)
 	{
@@ -31,5 +57,10 @@ void Actor::TakeDamage(Actor* From, int Amount)
 void Actor::OnDeath()
 {
 	printf("Actor is dead\n");
+}
+
+void Actor::PrintStatus()
+{
+	printf("Actor의 체력: %d\n\n", Hp);
 }
 

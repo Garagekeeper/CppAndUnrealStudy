@@ -173,8 +173,8 @@ int GetRandMonsterIndex()
 
 void PrintHP(Player& InPlayer, Monster& InMonster)
 {
-	printf("\n당신의 체력: %d\n", InPlayer.GetHp());
-	printf("%s의 체력: %d\n\n",InMonster.GetNmase().c_str(), InMonster.GetHp());
+	InPlayer.PrintStatus();
+	InMonster.PrintStatus();
 }
 
 int RollDice(int DiceMax)
@@ -190,7 +190,6 @@ int GetAdditiveDamageByDice(int DiceMax)
 	cin.get();
 	return RollDice(DiceMax);
 }
-
 
 bool TurnBasedCombat(Player* player)
 {
@@ -279,7 +278,11 @@ bool TurnBasedCombat(Player* player)
 		bPlayerWon = false;
 	}
 
-
+	for (int i = 0; i < 3; i++)
+	{
+		delete monsterArr[i];
+		monsterArr[i] = nullptr;
+	}
 
 	return bPlayerWon;
 }

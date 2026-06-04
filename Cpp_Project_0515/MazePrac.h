@@ -82,7 +82,7 @@ int GetAdditiveDamageByDice(int DiceMax);
 /// </summary>
 /// /// <param name="InitailPlayerHp">플레이어 체력</param>
 /// <returns>승리 여부</returns>
-bool TurnBasedCombat(Player& player);
+bool TurnBasedCombat(Player* player);
 
 /// <summary>
 /// MazeAdventure 실행 함수

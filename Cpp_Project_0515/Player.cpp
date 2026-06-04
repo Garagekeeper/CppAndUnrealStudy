@@ -1,6 +1,18 @@
 #include "Player.h"
 
 
+Player::Player(int PosX, int PosY)
+	: Actor(100, 100, 5)
+{
+	Pos = new Position(PosX, PosY);
+	Money = 0;
+}
+
+Player::~Player()
+{
+	delete[] Pos;
+}
+
 void Player::GetReward(int Amount)
 {
 	Money += Amount;
