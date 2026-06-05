@@ -83,6 +83,14 @@
 //		- 잠을 자면 나이증가, 에너지 만땅
 //		- 자신의 정보를 출력할 수 있음
 //
+
+class ISwimable
+{
+public:
+	virtual void Swim() = 0;
+	virtual ~ISwimable() {};
+};
+
 class Animal
 {
 
@@ -134,7 +142,7 @@ public:
 	virtual void		Move() override;
 };
 
-class Fish : public Animal
+class Fish : public Animal, public ISwimable
 {
 	const float			SwimEnergyDelta = 15.0f;
 
@@ -144,7 +152,7 @@ public:
 						Fish(std::string _Name, float _Energy, float _EnergyMax, int _Age)
 							: Animal(_Name, _Energy, _EnergyMax, _Age){};
 
-	void				Swim();
+	virtual	void		Swim() override;
 	virtual void		Move() override;
 };
 

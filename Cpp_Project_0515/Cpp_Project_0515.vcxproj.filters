@@ -19,6 +19,9 @@
     <Filter Include="Maze\Creature">
       <UniqueIdentifier>{7a810e79-a706-4785-8b8b-f4a1c0f7d9be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataStructure">
+      <UniqueIdentifier>{23367cd3-82a4-4032-9435-32005ba8eb70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Project.cpp">
@@ -80,6 +83,15 @@
     </ClCompile>
     <ClCompile Include="MazePrac.cpp">
       <Filter>Maze</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0605.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLinkedList.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="MyVector.cpp">
+      <Filter>DataStructure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +169,15 @@
     </ClInclude>
     <ClInclude Include="MazePrac.h">
       <Filter>Maze</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0605.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLinkedList.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVector.h">
+      <Filter>DataStructure</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
