@@ -179,5 +179,8 @@
     <ClInclude Include="MyVector.h">
       <Filter>DataStructure</Filter>
     </ClInclude>
+    <ClInclude Include="Day0608.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

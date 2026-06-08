@@ -165,6 +165,7 @@
     <ClInclude Include="Day0602.h" />
     <ClInclude Include="Day0604.h" />
     <ClInclude Include="Day0605.h" />
+    <ClInclude Include="Day0608.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Monster.h" />
