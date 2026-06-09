@@ -169,7 +169,7 @@ void Daya0605TestVec()
 	MyVec->Print();
 	MyVec->PrintSizeAndCapacity();
 
-	int currSize = MyVec->GetSize();
+	int currSize = static_cast<int>(MyVec->GetSize());
 
 	printf("Size 가 0이 될때까지 pop_back()\n");
 	while(currSize!=0)

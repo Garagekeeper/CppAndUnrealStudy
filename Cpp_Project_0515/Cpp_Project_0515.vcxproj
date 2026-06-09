@@ -136,10 +136,12 @@
     <ClCompile Include="Day0602.cpp" />
     <ClCompile Include="Day0604.cpp" />
     <ClCompile Include="Day0605.cpp" />
+    <ClCompile Include="Day0609.cpp" />
     <ClCompile Include="MazePrac.cpp" />
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyLinkedList.cpp" />
+    <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -166,11 +168,13 @@
     <ClInclude Include="Day0604.h" />
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Day0608.h" />
+    <ClInclude Include="Day0609.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MazeCommon.h" />
     <ClInclude Include="MyLinkedList.h" />
+    <ClInclude Include="MyStack.h" />
     <ClInclude Include="MyVector.h" />
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
