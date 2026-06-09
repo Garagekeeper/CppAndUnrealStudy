@@ -99,6 +99,9 @@
     <ClCompile Include="MyStack.cpp">
       <Filter>DataStructure</Filter>
     </ClCompile>
+    <ClCompile Include="MyQueue.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Day0515.h">
@@ -192,6 +195,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MyStack.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="MyQueue.h">
       <Filter>DataStructure</Filter>
     </ClInclude>
   </ItemGroup>

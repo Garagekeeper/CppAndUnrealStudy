@@ -3,10 +3,12 @@
 #include <iostream>
 
 #include "MyStack.h"
+#include "MyQueue.h"
 #include "Day0609.h"
 void Day0609::Day0609_Main()
 {
-	Day0609_Stack();
+	//Day0609_Stack();
+    TestQueue();
 }
 
 void Day0609::Day0609_Stack()
@@ -95,7 +97,7 @@ void Day0609::TestStack()
     printf("\n문자열 뒤집어 출력하기\n");
     std::string InStr;
 
-    printf("문자열을 입력하세요(10글자 까지) : ");
+    printf("문자열을 입력하세요 : ");
     std::cin >> InStr;
 
     std::stack<char> STLStack;
@@ -118,5 +120,57 @@ void Day0609::TestStack()
     {
         printf("%c", STLStack.top());
         STLStack.pop();
+    }
+}
+
+void Day0609::TestQueue()
+{
+    // 크기가 10으로 고정된 큐 객체를 생성합니다.
+    MyQueue Queue(3);
+    printf("크기가 %u인 큐가 생성되었습니다.\n", Queue.GetCapacity());
+
+    int Choice, Value;
+
+    while (true)
+    {
+        printf("\n--- 메뉴 ---\n");
+        printf("1. 인큐 (Enqueue)\n");
+        printf("2. 디큐 (Dequeue)\n");
+        printf("3. 피크 (Peek)\n");
+        printf("4. 출력 (Print)\n");
+        printf("5. 종료\n");
+        printf("선택: ");
+
+        std::cin >> Choice;
+
+        switch (Choice)
+        {
+            case 1:
+                printf("큐에 추가할 정수를 입력하세요: ");
+                std::cin >> Value;
+                Queue.Enqueue(Value);
+                break;
+            case 2:
+                Queue.Dequeue();
+                break;
+            case 3:
+            {
+                int FrontValue = Queue.Peek();
+                if (FrontValue != Queue.GetEmpty())
+                {
+                    printf("큐의 맨 앞 데이터: %d\n", FrontValue);
+                }
+            }
+            break;
+            case 4:
+                Queue.Print();
+                break;
+            case 5:
+                printf("프로그램을 종료합니다.\n");
+                return;
+            default:
+                printf("잘못된 선택입니다. 다시 시도하세요.\n");
+                break;
+        }
     }
 }

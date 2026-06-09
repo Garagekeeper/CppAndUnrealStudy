@@ -141,6 +141,7 @@
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="MyLinkedList.cpp" />
+    <ClCompile Include="MyQueue.cpp" />
     <ClCompile Include="MyStack.cpp" />
     <ClCompile Include="MyVector.cpp" />
     <ClCompile Include="Orc.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="MazeCommon.h" />
     <ClInclude Include="MyLinkedList.h" />
+    <ClInclude Include="MyQueue.h" />
     <ClInclude Include="MyStack.h" />
     <ClInclude Include="MyVector.h" />
     <ClInclude Include="Orc.h" />

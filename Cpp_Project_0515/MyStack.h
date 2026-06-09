@@ -7,13 +7,14 @@ class MyStack
 	static constexpr int	StackEmpty = -1;
 
 	int						TopIndex = StackEmpty;
-	int						Capacity = 10;
+	int						Capacity = InitialCapacity;
 	int						Size = 0;
 	int*					Data;
 	//std::vector<int>		Data;
 
 public:
 							MyStack() : Data(new int[InitialCapacity]) {}
+							MyStack(int Size) : Data(new int[Size]) {}
 							~MyStack();
 							//MyStack() : Data(td::vector<int>(InitialCapacity)) {}
 
