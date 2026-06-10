@@ -22,6 +22,9 @@
     <Filter Include="DataStructure">
       <UniqueIdentifier>{23367cd3-82a4-4032-9435-32005ba8eb70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataStructure\Template">
+      <UniqueIdentifier>{ef585742-7009-4456-93e5-c34f920da81e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cpp_Project.cpp">
@@ -100,6 +103,15 @@
       <Filter>DataStructure</Filter>
     </ClCompile>
     <ClCompile Include="MyQueue.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="Day0610.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Coordinate.cpp">
+      <Filter>DataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="BST.cpp">
       <Filter>DataStructure</Filter>
     </ClCompile>
   </ItemGroup>
@@ -199,6 +211,24 @@
     </ClInclude>
     <ClInclude Include="MyQueue.h">
       <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="Day0610.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinate.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="BitFlag.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="BST.h">
+      <Filter>DataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateMyList.h">
+      <Filter>DataStructure\Template</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateFixedStack.h">
+      <Filter>DataStructure\Template</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

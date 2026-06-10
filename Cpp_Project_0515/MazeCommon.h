@@ -71,12 +71,12 @@ struct Position
 		return *this;
 	}
 
-	Position operator-(Position& InOthers) const
+	Position operator-(const Position& InOthers) const
 	{
 		return Position(X - InOthers.X, Y - InOthers.Y);
 	}
 
-	bool operator==(Position& InOthers) const
+	bool operator==(const Position& InOthers) const
 	{
 		return (X == InOthers.X) && (Y == InOthers.Y);
 	}

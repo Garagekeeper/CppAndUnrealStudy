@@ -144,14 +144,6 @@ ListNode* MyLinkedList::Search(int InData) const
 
 void MyLinkedList::Clear()
 {
-	//ListNode* Curr = Head;
-	//while (Curr->Next != nullptr)
-	//{
-	//	ListNode* Prev = Curr;
-	//	Curr = Curr->Next;
-	//	delete Prev;
-	//}
-
 	while (Head)
 	{
 		RemoveAt(0);

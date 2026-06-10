@@ -1,8 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
-#include "Day0609.h"
+#include "Day0605.h"
+#include "Day0610.h"
 #include "MazePrac.h"
+#include "Coordinate.h"
 using namespace std;
 
 
@@ -21,6 +23,9 @@ int main()
 	//Daya0605TestList();
 	//Daya0605TestSTLList();
 	//Daya0605TestVec();
-	Day0609 day0609;
-	day0609.Day0609_Main();
+	//Day0609 day0609;
+	//day0609.Day0609_Main();
+
+	Day0610 Day010;
+	Day010.Day0610_Run();
 }

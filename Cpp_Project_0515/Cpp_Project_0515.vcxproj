@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +125,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="BST.cpp" />
+    <ClCompile Include="Coordinate.cpp" />
     <ClCompile Include="Cpp_Project.cpp" />
     <ClCompile Include="Day0522.cpp" />
     <ClCompile Include="Day0521_2_1.cpp" />
@@ -137,6 +140,7 @@
     <ClCompile Include="Day0604.cpp" />
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Day0609.cpp" />
+    <ClCompile Include="Day0610.cpp" />
     <ClCompile Include="MazePrac.cpp" />
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -152,6 +156,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="BitFlag.h" />
+    <ClInclude Include="BST.h" />
+    <ClInclude Include="Coordinate.h" />
     <ClInclude Include="Day0519.h" />
     <ClInclude Include="Day0515.h" />
     <ClInclude Include="Day0518.h" />
@@ -170,6 +177,7 @@
     <ClInclude Include="Day0605.h" />
     <ClInclude Include="Day0608.h" />
     <ClInclude Include="Day0609.h" />
+    <ClInclude Include="Day0610.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Monster.h" />
@@ -181,6 +189,8 @@
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Slime.h" />
+    <ClInclude Include="TemplateFixedStack.h" />
+    <ClInclude Include="TemplateMyList.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Wyvern.h" />
   </ItemGroup>
