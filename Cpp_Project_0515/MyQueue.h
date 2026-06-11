@@ -14,6 +14,7 @@ private:
 public:
 							MyQueue() : Data(new int[InitCapacity]) {}
 							MyQueue(int Capacity) : Capacity(Capacity), Data(new int[Capacity]) {}
+							~MyQueue();
 	void					Enqueue(int InValue);
 	int						Dequeue();
 	int						Peek() const;

@@ -3,6 +3,7 @@
 #include <time.h>
 #include "Day0605.h"
 #include "Day0610.h"
+#include "Day0611.h"
 #include "MazePrac.h"
 #include "Coordinate.h"
 using namespace std;
@@ -26,6 +27,9 @@ int main()
 	//Day0609 day0609;
 	//day0609.Day0609_Main();
 
-	Day0610 Day010;
-	Day010.Day0610_Run();
+	//Day0610 Day010;
+	//Day010.Day0610_Run();
+
+	Day0611 Day0611;
+	Day0611.Day0611_Run();
 }

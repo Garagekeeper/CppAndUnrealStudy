@@ -141,6 +141,7 @@
     <ClCompile Include="Day0605.cpp" />
     <ClCompile Include="Day0609.cpp" />
     <ClCompile Include="Day0610.cpp" />
+    <ClCompile Include="Day0611.cpp" />
     <ClCompile Include="MazePrac.cpp" />
     <ClCompile Include="Day0529.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Day0608.h" />
     <ClInclude Include="Day0609.h" />
     <ClInclude Include="Day0610.h" />
+    <ClInclude Include="Day0611.h" />
     <ClInclude Include="MazePrac.h" />
     <ClInclude Include="Day0529.h" />
     <ClInclude Include="Monster.h" />
@@ -191,6 +193,8 @@
     <ClInclude Include="Slime.h" />
     <ClInclude Include="TemplateFixedStack.h" />
     <ClInclude Include="TemplateMyList.h" />
+    <ClInclude Include="TemplateMyQueue.h" />
+    <ClInclude Include="TemplateMyVector.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Wyvern.h" />
   </ItemGroup>

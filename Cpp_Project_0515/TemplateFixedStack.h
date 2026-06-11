@@ -1,6 +1,6 @@
 #pragma once
 
-template<typename T>
+template<typename T, int Capacity>
 class TemplateFixedStack
 {
 public:
@@ -14,15 +14,15 @@ public:
     inline int GetSize() const { return TopIndex + 1; }
 
 private:
-    static constexpr int StackCapacity = 10;
+    static constexpr int StackCapacity = Capacity;
     static constexpr int Empty = -1;
 
     T Data[StackCapacity];
     int TopIndex = Empty;
 };
 
-template<typename T>
-void TemplateFixedStack<T>::PrintState()
+template<typename T, int Capacity>
+void TemplateFixedStack<T, Capacity>::PrintState()
 {
     if constexpr (std::is_same_v<T, double> || std::is_same_v<T, float>)
         if (Top() - Empty < 0.001f)
@@ -34,8 +34,8 @@ void TemplateFixedStack<T>::PrintState()
     
 }
 
-template <typename T>
-void TemplateFixedStack<T>::Push(T InValue)
+template<typename T, int Capacity>
+void TemplateFixedStack<T, Capacity>::Push(T InValue)
 {
     if (IsFull())
     {
@@ -47,8 +47,8 @@ void TemplateFixedStack<T>::Push(T InValue)
 }
 
 // 스택에서 원소를 제거합니다.
-template <typename T>
-T TemplateFixedStack<T>::Pop()
+template<typename T, int Capacity>
+T TemplateFixedStack<T, Capacity>::Pop()
 {
     if (IsEmpty())
     {
@@ -61,8 +61,8 @@ T TemplateFixedStack<T>::Pop()
 }
 
 // 스택의 최상단 원소를 확인합니다.
-template <typename T>
-T TemplateFixedStack<T>::Top()
+template<typename T, int Capacity>
+T TemplateFixedStack<T, Capacity>::Top()
 {
     if (IsEmpty())
     {

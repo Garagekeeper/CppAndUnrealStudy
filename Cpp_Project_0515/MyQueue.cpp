@@ -1,6 +1,12 @@
 #include "MyQueue.h"
 #include <iostream>
 
+MyQueue::~MyQueue()
+{
+	delete[] Data;
+	Data = nullptr;
+}
+
 void MyQueue::Enqueue(int InValue)
 {
 	if (IsFull())
@@ -21,6 +27,7 @@ void MyQueue::Enqueue(int InValue)
 	Data[Rear] = InValue;
 
 }
+
 
 int MyQueue::Dequeue()
 {

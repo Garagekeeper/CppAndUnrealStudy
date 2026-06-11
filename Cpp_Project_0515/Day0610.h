@@ -4,7 +4,49 @@
 		- 템플릿 함수와 같음. 코드 중복을 줄이는 것이 목적
 		- 컴파일 타임에 템플릿을 사용하는 코드가 나오면 컴파일러가 생성(템플릿 인스턴스화)
 		- 이항 연산자는 구조체 밖에서 연산자 오버로딩 하는게 정석
+		- 템플릿 클래스의 맴버 함수는 헤더에 선언
+			- 실제 사용될 때 코드를 생성하기 때문에
+				- 바이트코드를 생성하려면 구현이 필요함 그런데 다른 파일을 접근이 불가능
+				- 물론 헤더파일이 가능하게 해주지만 템플릿은 이게 안된데여
 
+	// 소수 같은지 비교
+	// 매우 큰 수도 상대오차로 비교
+	template<typename T>
+	inline bool TemplateMyLinkedList<T>::IsEqual(T Left, T Right)
+	{
+		bool Res = false;
+		//if constexpr (std::is_same_v<T, float> || std::is_same_v<T, double>)
+		if constexpr (std::is_floating_point_v<T>)
+		{
+			float diff = std::abs(Left - Right);
+			Res = diff <= std::numeric_limits<T>::epsilon() * std::max(std::(Left), std::abs(Right));
+		}
+		else
+		{
+			Res = Left == Right;
+		}
+
+		return Res;
+	}
+
+	//소수 같은이 비교 c++ 20 이상
+	//c++20이상
+	// 클래스 자체가 아래 형식으로 되어야 사용가능
+	// 아니면 함수 선언할 때 부터 require를 붙이던가
+	//#include <concepts>
+	
+	template <std::floating_point T>
+	bool IsEqula(T Left, T Right)
+	{
+		float diff = std::abs(Left - Right);
+		return = diff <= std::numeric_limits<T>::epsilon() * std::max(std::(Left), std::abs(Right));
+	}
+	
+	template <std::integral T>
+	bool IsEqula(T Left, T Right)
+	{
+		Res = Left == Right;
+	}
 
 	typename std::enable_if_t<std::is_enum_v<T>, T> operator|(T Left, T Right)
 	T가 Enum일 경우에만 코드를 생성

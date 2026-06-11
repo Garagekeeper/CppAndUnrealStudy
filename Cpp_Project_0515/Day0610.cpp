@@ -138,7 +138,7 @@ void Day0610::TemplateStackTest()
 {
 	printf("--- FixedStack 테스트 시작 ---\n\n");
 
-	TemplateFixedStack<float> stack;
+	TemplateFixedStack<float, 10> stack;
 
 	// 1. 초기 상태 테스트
 	printf("1. 초기 상태 테스트\n");
@@ -199,7 +199,7 @@ void Day0610::TemplateStackTest()
 	stack.Pop(); // "오류: 스택이 비어있습니다!" 메시지 출력 예상
 
 	printf("\n언더플로우 시도 (Top)\n");
-	int topValue = stack.Top(); // "오류: ..." 메시지 출력 예상
+	float topValue = stack.Top(); // "오류: ..." 메시지 출력 예상
 	printf("Top 호출 결과: %d\n", topValue); // Empty(-1) 값 출력 예상
 	printf("\n");
 

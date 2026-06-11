@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
+#include <cmath>
+#include <limits>
+#include <concepts>
 
 template<typename T>
 struct TemplateListNode
 {
-	T Data = 0;
+	T						Data = 0;
 	TemplateListNode<T>* Next = nullptr;
 	TemplateListNode(T InData) : Data(InData) {}
 };
@@ -15,19 +18,25 @@ class TemplateMyLinkedList
 
 	TemplateListNode<T>* Head = nullptr;
 	TemplateListNode<T>* Tail = nullptr;
-	int Size = 0;
+	int						Size = 0;
 
 public:
 	TemplateMyLinkedList() = default;
 	~TemplateMyLinkedList();
 
-	void Add(T InData);						// 리스트의 마지막에 데이터를 추가하는 함수
-	void InsertAt(T InData, int InPosition);	// 리스트의 중간에 데이터를 추가하는 함수
-	void Remove(T InData);					// 특정 데이터를 가지는 노드를 제거하는 함수
-	void RemoveAt(int InPosition);				// 특정 번째의 노드를 제거하는 함수
+	void					Add(T InData);						// 리스트의 마지막에 데이터를 추가하는 함수
+	void					InsertAt(T InData, int InPosition);	// 리스트의 중간에 데이터를 추가하는 함수
+	void					Remove(T InData);					// 특정 데이터를 가지는 노드를 제거하는 함수
+	void					RemoveAt(int InPosition);				// 특정 번째의 노드를 제거하는 함수
+	void					Clear();								// 모든 노드를 제거하는 함수
+	void					PrintList() const;
 	TemplateListNode<T>* Search(T InData) const;			// 특정 데이터가 있는지 확인하는 함수. 리턴이 null이면 없다. null이 아니면 찾은 노드
-	void Clear();								// 모든 노드를 제거하는 함수
-	void PrintList() const;
+
+	inline bool				IsEmpty() const { return Head == nullptr; }
+	inline int				GetSize() const { return Size; }
+
+private:
+	bool					IsEqual(T Left, T Right) const;
 };
 
 
@@ -41,7 +50,7 @@ template<typename T>
 void TemplateMyLinkedList<T>::Add(T Data)
 {
 	TemplateListNode<T>* NewNode = new TemplateListNode<T>(Data);
-	if (Head == nullptr)
+	if (IsEmpty())
 	{
 		Head = NewNode;
 		Tail = NewNode;
@@ -135,7 +144,7 @@ void TemplateMyLinkedList<T>::RemoveAt(int InPosition)
 	{
 		Target = Head;
 		Head = Target->Next;
-		if (Head == nullptr)
+		if (IsEmpty())
 			Tail = nullptr;
 	}
 	else if (InPosition == Size - 1)
@@ -165,38 +174,16 @@ TemplateListNode<T>* TemplateMyLinkedList<T>::Search(T InData) const
 	TemplateListNode<T>* Res = nullptr;
 	while (CurrentNode)
 	{
-		if constexpr (std::is_same_v<T, float>)
-		{
-			float diff = InData - CurrentNode->Data;
-			if (diff < 0) diff *= -1;
-			if (diff < 0.001f) 
-			{
-				Res = CurrentNode;
-				break;
-			}
-		}
-		else if constexpr (std::is_same_v<T, double>)
-		{
-			double diff = InData - CurrentNode->Data;
-			if (diff < 0) diff *= -1;
-			if (diff < 0.000001)
-			{
-				Res = CurrentNode;
-				break;
-			}
-		}
-		else
-		{
-			if (CurrentNode->Data == InData)
-			{
-				Res = CurrentNode;
-				break;
-			}
-		}
 
+		if (IsEqual(CurrentNode->Data, InData))
+		{
+			Res = CurrentNode;
+			break;
+		}
 
 		CurrentNode = CurrentNode->Next;
 	}
+
 
 	if (Res)
 	{
@@ -209,7 +196,7 @@ TemplateListNode<T>* TemplateMyLinkedList<T>::Search(T InData) const
 	{
 		if constexpr (std::is_same_v<T, double> || std::is_same_v<T, float>)
 			printf("결과: %f 값을 가진 노드를 찾지 못했습니다.\n", InData);
-		else 
+		else
 			printf("결과: %d 값을 가진 노드를 찾지 못했습니다.\n", InData);
 	}
 
@@ -231,8 +218,43 @@ void TemplateMyLinkedList<T>::PrintList() const
 	TemplateListNode<T>* Curr = Head;
 	while (Curr != nullptr)
 	{
-		std::cout <<"[ " << Curr->Data << " ]";
+		std::cout << "[ " << Curr->Data << " ]";
 		Curr = Curr->Next;
 	}
 	printf("nullptr \n");
 }
+
+template<typename T>
+inline bool TemplateMyLinkedList<T>::IsEqual(T Left, T Right) const
+{
+	bool Res = false;
+	//if constexpr (std::is_same_v<T, float> || std::is_same_v<T, double>)
+	if constexpr (std::is_floating_point_v<T>)
+	{
+		double diff = std::abs(Left - Right);
+		Res = diff <= std::numeric_limits<T>::epsilon() * std::max(std::abs(Left), std::abs(Right));
+	}
+	else
+	{
+		Res = Left == Right;
+	}
+	
+	return Res;
+}
+
+//c++20이상
+//#include <concepts>
+// 클래스 자체가 아래 형식으로 되어야 사용가능
+// 아니면 함수 선언할 때 부터 require를 붙이던가
+//template <std::floating_point T>
+//bool TemplateMyLinkedList<T>::IsEqual(T Left, T Right) const
+//{
+//	float diff = std::abs(Left - Right);
+//	return diff <= std::numeric_limits<T>::epsilon() * std::max(std::abs(Left), std::abs(Right));
+//}
+//
+//template <std::integral T>
+//bool TemplateMyLinkedList<T>::IsEqual(T Left, T Right) const
+//{
+//	return Left == Right;
+//}

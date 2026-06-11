@@ -13,6 +13,8 @@ MyVector::~MyVector()
 	Clear();
 }
 
+
+
 void MyVector::Reserve(size_t Amount)
 {
 	if (DataArr != nullptr)
